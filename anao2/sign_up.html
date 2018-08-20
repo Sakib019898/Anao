@@ -1,0 +1,154 @@
+<?php
+include("connection.php");
+?>
+<html>
+<?php
+$reg=@$_POST['loginbtn1'];
+$reg2=@$_POST['loginbtn2'];
+
+$username=strip_tags(@$_POST['uname']);
+$password=strip_tags(@$_POST['password']);
+$password2=strip_tags(@$_POST['password2']);
+$email =strip_tags(@$_POST['email']);
+$email2=strip_tags(@$_POST['email2']);
+$contact=strip_tags(@$_POST['contact']);
+
+$username3=strip_tags(@$_POST['uname3']);
+$password3=strip_tags(@$_POST['password3']);
+$password4=strip_tags(@$_POST['password4']);
+$email3 =strip_tags(@$_POST['email3']);
+$email4=strip_tags(@$_POST['email4']);
+$contact3=strip_tags(@$_POST['contact3']);
+$passport3=strip_tags(@$_POST['passport3']);
+
+
+if($reg2){
+	if($email3==$email4){
+
+		if($username3 && $email3 && $email4 && $password3 && $password4 && $contact3 && $passport3){
+
+			if($password3==$password4){
+
+				$sql = "INSERT INTO traveler_basic(username,phone,email,password,passport)
+				VALUES ('$username3','$contact3','$email3','$password3','passport3')";
+
+				$result=mysqli_query($conn,$sql);
+
+				die("<h2> Welcome to anao</h2>Login to your account to get started....");
+
+			}
+			else{
+				echo "Password Doesn't Match!";
+			}
+		}
+
+		else{
+			echo "Fill Up The Form First!";
+		}
+	}
+			
+	else{
+		echo "Your Email Doesn't Match!";
+	}
+}
+
+
+
+
+
+if($reg){
+	if($email==$email2){
+
+		if($username && $email && $email2 && $password && $password2 && $contact){
+
+			if($password==$password2){
+
+				$sql = "INSERT INTO customer(username,mobile,email,password)
+				VALUES ('$username','$contact','$email','$password',)";
+
+				$result=mysqli_query($conn,$sql);
+
+				die("<h2> Welcome to anao</h2>Login to your account to get started....");
+
+			}
+			else{
+				echo "Password Doesn't Match!";
+			}
+		}
+
+		else{
+			echo "Fill Up The Form First!";
+		}
+	}
+			
+	else{
+		echo "Your Email Doesn't Match!";
+	}
+}
+
+
+
+
+
+
+?>
+
+
+
+<head>
+<title>Sign Up</title>
+<link rel='stylesheet' href='css/signup.css'>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js'></script>
+<script type='text/javascript' src='js/signup.js'></script>
+
+</head>
+<body>
+     <header id='header'>
+       <h1>Anao Sign Up Panel</h1>
+	 </header>
+     <section id='maincontent'>
+	   <div id='container'>
+	     <div id='tabbox'>
+          <a href='#' id='customer' class='tab select'>Customer</a>
+		  <a href='#' id='traveler' class='tab traveler'>Traveler</a>
+		  </div>
+		  <div  id='formpanel'>
+		     <div  id='customerbox'>
+		       <form action='#' id='customerform' method='post'>
+			   
+			   <input type='text' name='uname' id='uname' class='txtfield' placeholder='USERNAME' tabindex='1' autocomplete='off'>
+               
+			   <input type='email' name='email' id='email' class='txtfield' placeholder='EMAIL' tabindex='2' autocomplete='off'>
+               <input type='email' name='email2' id='email' class='txtfield' placeholder='EMAIL(again)' tabindex='3' autocomplete='off'>
+              
+               <input type='text' name='contact' id='contact' class='txtfield' placeholder='CONTACT NUMBER' tabindex='4' autocomplete='off'>
+              
+			   <input type='Password' name='Password' id='Password' class='txtfield' placeholder='PASSWORD' tabindex='5' autocomplete='off'>
+               <input type='Password' name='Password2' id='Password' class='txtfield' placeholder='PASSWORD(again)' tabindex='6' autocomplete='off'>
+              
+			  
+			  <input type='submit' name='loginbtn1' id='submitlogin' class='btn' tabindex='7'>
+              </form>
+			   </div>
+			   <div  id='travelerbox'>
+		       <form action='#' id='travelerform' method='post'>
+			   <input type='text' name='uname3' id='uname' class='txtfield' placeholder='USERNAME' tabindex='1' autocomplete='off'>
+               
+			   <input type='email' name='email3' id='email' class='txtfield' placeholder='EMAIL' tabindex='2' autocomplete='off'>
+               <input type='email' name='email4' id='email' class='txtfield' placeholder='EMAIL(again)' tabindex='3' autocomplete='off'>
+              
+			  
+               <input type='text' name='contact3' id='contact' class='txtfield' placeholder='CONTACT NUMBER' tabindex='4' autocomplete='off'>
+              
+			   <input type='text' name='passport3' id='passport' class='txtfield' placeholder='PASSPORT' tabindex='5' autocomplete='off'>
+              
+			   <input type='Password' name='Password3' id='Password' class='txtfield' placeholder='PASSWORD' tabindex='6' autocomplete='off'>
+               <input type='Password' name='Password4' id='Password' class='txtfield' placeholder='PASSWORD(again)' tabindex='7' autocomplete='off'>
+              
+			   <input type='submit' name='loginbtn2' id='submitlogin' class='btn' tabindex='8'>
+               </form>
+			   </div>
+			   </div>
+			   </div>
+			   </body>
+</html>
